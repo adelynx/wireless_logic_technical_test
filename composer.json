@@ -1,0 +1,30 @@
+{
+  "name": "adelynx/wireless_logic_technical_test",
+  "description": "WirelessLogic Software Engineering Technical Test",
+  "type": "project",
+  "require-dev": {
+    "phpunit/phpunit": "^9.5",
+    "symfony/var-dumper": "^5.3"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Test\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Adel Kedjour",
+      "email": "akedjour@outlook.com"
+    }
+  ],
+  "require": {
+    "fabpot/goutte": "^4.0",
+    "guzzlehttp/guzzle": "^7.3"
+  }
+}
