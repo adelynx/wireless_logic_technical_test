@@ -8,16 +8,29 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class SectionParser
 {
+    private PackageParser $packageParser;
+
     /**
      * SectionParser constructor.
      */
     public function __construct()
     {
-        // TODO::to be implemented
+        $this->packageParser = new PackageParser();
     }
 
-    public function parse(?Crawler $subscriptionsDom)
+    /**
+     * Parse the list of nodes with a CSS selector.
+     *
+     * @param Crawler|null $subscriptionsDom
+     *
+     * @return array
+     */
+    public function parse(?Crawler $subscriptionsDom): array
     {
-        // TODO::to be implemented
+        $packagesDomList = $subscriptionsDom->filter('.package');
+
+        return $packagesDomList->each(
+            fn($packageDom) => $this->packageParser->parse($packageDom)
+        );
     }
 }
