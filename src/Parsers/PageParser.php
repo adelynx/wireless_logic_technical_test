@@ -8,16 +8,29 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class PageParser
 {
+    private SectionParser $sectionParser;
+
     /**
      * PageParser constructor.
      */
     public function __construct()
     {
-        // TODO::to be implemented
+        $this->sectionParser = new SectionParser();
     }
 
-    public function parse(?Crawler $pageDom)
+    /**
+     * @param Crawler|null $pageDom
+     *
+     * @return array
+     */
+    public function parse(?Crawler $pageDom): array
     {
-        // TODO::to be implemented
+        $subscriptionsDomList = $pageDom->filter('#subscriptions');
+
+        $productOptions = $subscriptionsDomList->each(
+            fn($subscriptionsDom) => $this->sectionParser->parse($subscriptionsDom)
+        );
+
+        return array_flatten($productOptions);
     }
 }
