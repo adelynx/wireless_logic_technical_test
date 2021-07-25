@@ -40,3 +40,17 @@ if (! function_exists('convert_html_break_lines')) {
         return str_replace('<br>', PHP_EOL, $text);
     }
 }
+
+if (! function_exists('get_price')) {
+    /**
+     * Get the price without currency from the text.
+     *
+     * @param string $text
+     *
+     * @return float
+     */
+    function get_price(string $text): float
+    {
+        return (float)preg_replace('/[^.\d]/', '', $text);
+    }
+}

@@ -71,7 +71,7 @@ class PriceParser
      */
     private function calculateAnnualPrice(string $packagePrice): float
     {
-        $price = $this->getPrice($packagePrice);
+        $price = get_price($packagePrice);
         $isMonthly = $this->isMonthly($packagePrice);
 
         if ($isMonthly) {
@@ -79,18 +79,6 @@ class PriceParser
         }
 
         return $price;
-    }
-
-    /**
-     * Get the price without currency from the package price.
-     *
-     * @param string $packagePrice
-     *
-     * @return float
-     */
-    private function getPrice(string $packagePrice): float
-    {
-        return (float)preg_replace('/[^.\d]/', '', $packagePrice);
     }
 
     /**
