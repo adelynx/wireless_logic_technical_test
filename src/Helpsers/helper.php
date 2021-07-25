@@ -27,3 +27,16 @@ if (! function_exists('array_flatten')) {
     }
 }
 
+if (! function_exists('convert_html_break_lines')) {
+    /**
+     * Convert html break lines "<br>" to console format "\n"
+     *
+     * @param string $text
+     *
+     * @return string
+     */
+    function convert_html_break_lines(string $text): string
+    {
+        return str_replace('<br>', PHP_EOL, $text);
+    }
+}

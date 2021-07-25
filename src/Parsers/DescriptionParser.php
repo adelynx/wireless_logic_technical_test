@@ -15,6 +15,9 @@ class DescriptionParser
      */
     public function parse(?Crawler $packageFeaturesDom): string
     {
-        // TODO::to be implemented
+        $packageDescriptionDom = $packageFeaturesDom->filter('.package-name');
+        $description = $packageDescriptionDom->html();
+
+        return convert_html_break_lines($description);
     }
 }
