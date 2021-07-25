@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+clear
+
+URL="localhost:8000"
+
+# Start fake server
+echo -e "⌛  \033[34mPreparing: \033[0m\033[93m \033[93mRunning mock server in progress...\033[0m"
+
+php -S $URL tests/Fakeserver/products_web_page.html >/dev/null 2>&1 &
+
+echo "🎉 Mock server is running on : $URL"
+
+echo ""
+
+echo -e "⌛  \033[34mTesting: \033[0m\033[93m \033[93mRun all unit tests...\033[0m"
+
+./vendor/bin/phpunit
+
+# Stop the fake server after all the tests done
+echo -e "⌛  \033[34mCleaning: \033[0m\033[93m \033[93mStopping mock server in progress...\033[0m"
+
+ps aux | grep -v grep | grep "php -S $URL" | awk {'print $2'} | xargs kill -9
+
+echo "🎉 Mock server ($URL) is off."
+
+echo ""
+
+echo "🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉"
+echo -e "🎉 \033[34mWell done!\033[0m\033[93m \033[93mYour code is awesome\033[0m  🎉"
+echo "🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉"
