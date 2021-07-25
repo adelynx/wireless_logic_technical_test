@@ -30,7 +30,7 @@ class Application
         $productOptions = $this->pageParser->parse($pageDom);
 
         $productOptions = $this->orderByAnnualPriceDesc($productOptions);
-        
+
         return array_to_json($productOptions);
     }
 
