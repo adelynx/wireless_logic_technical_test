@@ -19,7 +19,14 @@ $productOptionsJson = json_encode($productOptions, true);
 
 echo $productOptionsJson;
 
-function orderByAnnualPriceDesc(array $productOptions)
+/**
+ * @param array $productOptions
+ *
+ * @return array
+ */
+function orderByAnnualPriceDesc(array $productOptions): array
 {
-    // TODO::to be implemented
+    usort($productOptions, fn($a, $b) => $b->price <=> $a->price);
+
+    return $productOptions;
 }
