@@ -54,3 +54,17 @@ if (! function_exists('get_price')) {
         return (float)preg_replace('/[^.\d]/', '', $text);
     }
 }
+
+if (! function_exists('array_to_json')) {
+    /**
+     * Get the price without currency from the text.
+     *
+     * @param array $array
+     *
+     * @return string
+     */
+    function array_to_json(array $array): string
+    {
+        return json_encode($array);
+    }
+}
