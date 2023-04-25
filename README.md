@@ -4,7 +4,7 @@
 | **Author** | Adel Kedjour
 | **Version** | 1.0
 | **Updated on** | 25<sup>th</sup> July 2021
-| **Contact** | Adel Kedjour - akedjour@outlook.com
+| **Contact** | Adel Kedjour - adel@ik.me
 | **License** | MIT
 
 ## Requirements
